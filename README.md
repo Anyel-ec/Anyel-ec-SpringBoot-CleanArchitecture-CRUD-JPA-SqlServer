@@ -35,7 +35,7 @@ com.example.project
 - **Java 17**
 - **Spring Boot 3**
 - **Spring Data JPA** - For database access.
-- **H2 Database** - In-memory database for testing (can be adapted to MySQL, PostgreSQL, etc.).
+- **MSSQL Database** 
 - **SLF4J** - For logging.
 - **RestTemplate** - HTTP client for consuming services.
 
