@@ -49,8 +49,8 @@ com.example.project
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Anyel-ec/Anyel-ec-SpringBoot-CleanArchitecture-CRUD-JPA-SqlServer 
-cd clean-architecture-crud
+git clone https://github.com/Anyel-ec/SpringBoot-CleanArchitecture-CRUD-JPA-SqlServer
+cd SpringBoot-CleanArchitecture-CRUD-JPA-SqlServer
 ```
 
 Here's the updated **Database Configuration** section for your `README.md`:
