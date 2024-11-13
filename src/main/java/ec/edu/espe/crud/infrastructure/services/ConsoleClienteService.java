@@ -18,24 +18,35 @@ public class ConsoleClienteService {
     private static final Logger log = LoggerFactory.getLogger(ConsoleClienteService.class);
     private static final String BASE_URL = "http://localhost:8080";
     private final RestTemplate restTemplate;
+
     public ConsoleClienteService() {
         this.restTemplate = new RestTemplate();
     }
+
     public void printAllClientes() {
         String url = BASE_URL + "/api/clientes";
         try {
             Cliente[] clientes = restTemplate.getForObject(url, Cliente[].class);
             List<Cliente> clienteList = Arrays.asList(clientes);
 
-            log.info("Lista de Clientes:");
-            clienteList.forEach(cliente ->
-                    log.info("ID: " + cliente.getId() + ", Nombre: " + cliente.getNombre() + ", Email: " + cliente.getEmail()));
+            if (clienteList.isEmpty()) {
+                log.info("\n🔍 No se encontraron clientes en el sistema. ¡Es hora de agregar algunos!\n");
+            } else {
+                log.info("\n================= 📋 Lista de Clientes 📋 =================");
+                clienteList.forEach(cliente ->
+                        log.info("🔹 ID: {} | Nombre: {} | Email: {}", cliente.getId(), cliente.getNombre(), cliente.getEmail()));
+                log.info("===========================================================\n");
+            }
         } catch (Exception e) {
-            log.error("Error al obtener los clientes: {}", e.getMessage());
+            log.error("\n❌ Error al intentar obtener la lista de clientes: {}\n", e.getMessage());
+            log.error("🔧 Verifica que el servidor esté en ejecución y que la URL '{}' sea accesible.\n", url);
         }
     }
+
     public static void main(String[] args) {
         ConsoleClienteService service = new ConsoleClienteService();
+        log.info("\n🌐 Iniciando el servicio de consulta de clientes...");
         service.printAllClientes();
+        log.info("✅ Servicio finalizado. ¡Gracias por usar el sistema de clientes!\n");
     }
 }
